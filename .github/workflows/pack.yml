@@ -33,11 +33,7 @@ jobs:
       - name: Set up Python # FIXME: 나중에 내장 파이썬 버전이 3.7 이상으로 올라가면 삭제할 것
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8.6
-      - uses: actions/cache@v2
-        with:
-          path: ${{ matrix.projectPath }}/Library
-          key: ${{ matrix.targetPlatform }}-${{ matrix.projectPath }}-Library-v2
+          python-version: 3.8.6  
       - uses: docker://gableroux/unity3d:2019.1.0f2 # FIXME: 이미지 pull 받아오는 속도 개선 필요
         env:
           ULF: ${{ secrets.ULF }}
