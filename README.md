@@ -93,13 +93,13 @@ To use the above command line options on Unity Editor or on build player, `Asset
 ### Command Line Build
 
 ```
-$ /UnityPath/Unity -quit -batchmode -projectPath=/path/to/nekoyume/ -executeMethod Editor.Builder.Build[All, MacOS, Windows, Linux, MacOSHeadless, WindowsHeadless, LinuxHeadless]
+$ /UnityPath/Unity -quit -batchmode -projectPath=/path/to/nekoyume/ -executeMethod NineChoronicles.Editor.Builder.Build[All, MacOS, Windows, Linux, MacOSHeadless, WindowsHeadless, LinuxHeadless]
 ```
 
 - Example
 
 ```
-$ /Applications/Unity/Hub/Editor/2019.1.0f2/Unity.app/Contents/MacOS/Unity -quit -batchmode -projectPath=~/planetarium/nekoyume-unity/nekoyume/ -executeMethod Editor.Builder.BuildAll
+$ /Applications/Unity/Hub/Editor/2019.1.0f2/Unity.app/Contents/MacOS/Unity -quit -batchmode -projectPath=~/planetarium/nekoyume-unity/nekoyume/ -executeMethod NineChoronicles.Editor.Builder.BuildAll
 ```
 
 ### Editor Build

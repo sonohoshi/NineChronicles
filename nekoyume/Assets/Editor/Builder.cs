@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEditor.Callbacks;
 
-namespace Editor
+namespace NineChronicles.Editor
 {
     public class Builder {
 
