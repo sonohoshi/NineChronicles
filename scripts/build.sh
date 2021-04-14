@@ -7,7 +7,7 @@ title "Unity license"
 install_license
 
 title "Build binary"
-/opt/Unity/Editor/Unity \
+/opt/unity/Editor/Unity \
   -quit \
   -batchmode \
   -nographics \
