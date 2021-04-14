@@ -24,5 +24,5 @@ install_license() {
         -batchmode \
         -nographics \
         -logFile \
-        -manualLicenseFile /tmp/Unity_v2019.x.ulf || true
+        -manualLicenseFile /tmp/Unity_v2020.x.ulf || true
 }
