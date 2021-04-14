@@ -4,6 +4,7 @@ on:
     - main
     - development
     - rc-*
+    - ci/swen
     tags: ['*']
 
 name: Pack
