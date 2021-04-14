@@ -4,6 +4,7 @@ on:
     - main
     - development
     - rc-*
+    - unity-2020-ci-test
     tags: ['*']
 
 name: Pack
