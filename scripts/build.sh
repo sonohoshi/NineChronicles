@@ -12,5 +12,5 @@ title "Build binary"
   -batchmode \
   -nographics \
   -logFile \
-  -projectPath /src/ \
+  -projectPath nekoyume \
   -executeMethod "Editor.Test.BuildLinuxHeadlessDevelopment"
