@@ -6,13 +6,19 @@ using UnityEditor.Callbacks;
 
 namespace Editor
 {
+<<<<<<< HEAD:nekoyume/Assets/Editor/Test.cs
     public class Test {
+=======
+    public class Builder
+    {
+>>>>>>> 79143bbf3a07658576126753dc031cfd3529b79b:nekoyume/Assets/Editor/Builder.cs
 
         public static string PlayerName = PlayerSettings.productName;
 
         public const string BuildBasePath = "Build";
 
-        public static readonly string ProjectBasePath = Path.Combine(Application.dataPath, "..", "..");
+        public static readonly string ProjectBasePath =
+            Path.Combine(Application.dataPath, "..", "..");
 
         [MenuItem("Build/Standalone/Windows + macOS + Linux")]
         public static void BuildAll()
@@ -26,14 +32,16 @@ namespace Editor
         public static void BuildMacOS()
         {
             Debug.Log("Build macOS");
-            Build(BuildTarget.StandaloneOSX, targetDirName: "macOS", scriptName: "run", snapshotName: "NineChroniclesSnapshot");
+            Build(BuildTarget.StandaloneOSX, targetDirName: "macOS", scriptName: "run",
+                snapshotName: "NineChroniclesSnapshot");
         }
 
         [MenuItem("Build/Standalone/Windows")]
         public static void BuildWindows()
         {
             Debug.Log("Build Windows");
-            Build(BuildTarget.StandaloneWindows64, targetDirName: "Windows", scriptName: "run.bat", snapshotName: "NineChroniclesSnapshot.exe");
+            Build(BuildTarget.StandaloneWindows64, targetDirName: "Windows", scriptName: "run.bat",
+                snapshotName: "NineChroniclesSnapshot.exe");
         }
 
         [MenuItem("Build/Standalone/Linux")]
@@ -61,7 +69,8 @@ namespace Editor
         public static void BuildWindowsHeadless()
         {
             Debug.Log("Build Windows Headless");
-            Build(BuildTarget.StandaloneWindows64, BuildOptions.EnableHeadlessMode, "WindowsHeadless");
+            Build(BuildTarget.StandaloneWindows64, BuildOptions.EnableHeadlessMode,
+                "WindowsHeadless");
         }
 
         [MenuItem("Build/Development/Windows + macOS + Linux")]
@@ -76,14 +85,17 @@ namespace Editor
         public static void BuildMacOSDevelopment()
         {
             Debug.Log("Build MacOS Development");
-            Build(BuildTarget.StandaloneOSX, BuildOptions.Development, targetDirName: "macOS", scriptName: "run", snapshotName: "NineChroniclesSnapshot");
+            Build(BuildTarget.StandaloneOSX, BuildOptions.Development, targetDirName: "macOS",
+                scriptName: "run", snapshotName: "NineChroniclesSnapshot");
         }
 
         [MenuItem("Build/Development/Windows")]
         public static void BuildWindowsDevelopment()
         {
             Debug.Log("Build Windows Development");
-            Build(BuildTarget.StandaloneWindows64, BuildOptions.Development, targetDirName: "Windows", scriptName: "run.bat", snapshotName: "NineChroniclesSnapshot.exe");
+            Build(BuildTarget.StandaloneWindows64, BuildOptions.Development,
+                targetDirName: "Windows", scriptName: "run.bat",
+                snapshotName: "NineChroniclesSnapshot.exe");
         }
 
         [MenuItem("Build/Development/Linux")]
@@ -104,40 +116,40 @@ namespace Editor
         public static void BuildLinuxHeadlessDevelopment()
         {
             Debug.Log("Build Linux Headless Development");
-            Build(
-                BuildTarget.StandaloneLinux64,
-                BuildOptions.EnableHeadlessMode | BuildOptions.Development,
-                "LinuxHeadless");
+            Build(BuildTarget.StandaloneLinux64,
+                BuildOptions.EnableHeadlessMode | BuildOptions.Development, "LinuxHeadless");
         }
 
         [MenuItem("Build/Standalone/Windows Headless Development")]
         public static void BuildWindowsHeadlessDevelopment()
         {
             Debug.Log("Build Windows Headless Development");
-            Build(BuildTarget.StandaloneWindows64, BuildOptions.EnableHeadlessMode, "WindowsHeadless");
+            Build(BuildTarget.StandaloneWindows64, BuildOptions.EnableHeadlessMode,
+                "WindowsHeadless");
         }
 
-        public static void Build(
-            BuildTarget buildTarget,
+        public static void Build(BuildTarget buildTarget,
             BuildOptions options = BuildOptions.None,
             string targetDirName = null,
             string scriptName = null,
             string snapshotName = null)
         {
-            string[] scenes = { "Assets/_Scenes/Game.unity" };
+            string[] scenes = {"Assets/_Scenes/Game.unity"};
 
             targetDirName = targetDirName ?? buildTarget.ToString();
-            string locationPathName = Path.Combine(
-                BuildBasePath,
-                targetDirName,
-                buildTarget.HasFlag(BuildTarget.StandaloneWindows64) ? $"{PlayerName}.exe" : PlayerName);
+            string locationPathName = Path.Combine(BuildBasePath, targetDirName,
+                buildTarget.HasFlag(BuildTarget.StandaloneWindows64)
+                    ? $"{PlayerName}.exe"
+                    : PlayerName);
 
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
             {
                 scenes = scenes,
                 locationPathName = locationPathName,
                 target = buildTarget,
-                options = EditorUserBuildSettings.development ? options | BuildOptions.Development : options,
+                options = EditorUserBuildSettings.development
+                    ? options | BuildOptions.Development
+                    : options,
             };
 
             BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
@@ -169,18 +181,19 @@ namespace Editor
                     {
                         destLibPath += ".app";
                     }
-                    destLibPath = Path.Combine(
-                        destLibPath, "Contents/Resources/Data/Managed/", libDir);
+
+                    destLibPath = Path.Combine(destLibPath, "Contents/Resources/Data/Managed/",
+                        libDir);
                     break;
                 case BuildTarget.StandaloneWindows64:
                     libDir = Path.Combine(libDir, "win-x64", "native");
-                    destLibPath = Path.Combine(
-                        Path.GetDirectoryName(destLibPath), $"{binaryName}_Data/Managed", libDir);
+                    destLibPath = Path.Combine(Path.GetDirectoryName(destLibPath),
+                        $"{binaryName}_Data/Managed", libDir);
                     break;
                 default:
                     libDir = Path.Combine(libDir, "linux-x64", "native");
-                    destLibPath = Path.Combine(
-                        Path.GetDirectoryName(destLibPath), $"{binaryName}_Data/Managed", libDir);
+                    destLibPath = Path.Combine(Path.GetDirectoryName(destLibPath),
+                        $"{binaryName}_Data/Managed", libDir);
                     break;
             }
 
@@ -202,7 +215,9 @@ namespace Editor
             }
         }
 
-        private static void CopyToBuildDirectory(string basePath, string targetDirName, string filename)
+        private static void CopyToBuildDirectory(string basePath,
+            string targetDirName,
+            string filename)
         {
             if (filename == null) return;
             var source = Path.Combine(basePath, filename);
