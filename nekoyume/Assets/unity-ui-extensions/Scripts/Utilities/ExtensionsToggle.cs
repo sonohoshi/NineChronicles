@@ -13,7 +13,7 @@ namespace UnityEngine.UI
     public class ExtensionsToggle : Selectable, IPointerClickHandler, ISubmitHandler, ICanvasElement
     {
         /// <summary>
-        /// Variable to identify this script, change the datatype if needed to fit your use case 
+        /// Variable to identify this script, change the datatype if needed to fit your use case
         /// </summary>
         public string UniqueID;
 

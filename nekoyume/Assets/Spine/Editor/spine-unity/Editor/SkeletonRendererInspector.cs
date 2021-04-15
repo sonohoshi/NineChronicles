@@ -75,7 +75,7 @@ namespace Spine.Unity.Editor {
 		protected GUIContent NormalsLabel, TangentsLabel, MaskInteractionLabel;
 		protected GUIContent MaskMaterialsHeadingLabel, MaskMaterialsNoneLabel, MaskMaterialsInsideLabel, MaskMaterialsOutsideLabel;
 		protected GUIContent SetMaterialButtonLabel, ClearMaterialButtonLabel, DeleteMaterialButtonLabel;
-		
+
 		const string ReloadButtonString = "Reload";
 		static GUILayoutOption reloadButtonWidth;
 		static GUILayoutOption ReloadButtonWidth { get { return reloadButtonWidth = reloadButtonWidth ?? GUILayout.Width(GUI.skin.label.CalcSize(new GUIContent(ReloadButtonString)).x + 20); } }
@@ -101,7 +101,7 @@ namespace Spine.Unity.Editor {
 #if NEW_PREFAB_SYSTEM
 			isInspectingPrefab = false;
 #else
-			isInspectingPrefab = (PrefabUtility.GetPrefabType(target) == PrefabType.Prefab);
+			isInspectingPrefab = (PrefabUtility.GetPrefabAssetType(target) == PrefabAssetType.Regular);
 #endif
 
 			SpineEditorUtilities.ConfirmInitialization();
@@ -302,7 +302,7 @@ namespace Spine.Unity.Editor {
 
 				if (valid)
 					EditorGUILayout.PropertyField(initialSkinName, SpineInspectorUtility.TempContent("Initial Skin"));
-				
+
 			}
 
 			EditorGUILayout.Space();
@@ -384,7 +384,7 @@ namespace Spine.Unity.Editor {
 														differentMaskModesSelected, allowDelete : true, isActiveMaterial: activeMaskInteractionValue == (int)SpriteMaskInteraction.VisibleOutsideMask);
 						}
 						#endif
-						
+
 						EditorGUILayout.Space();
 
 						if (valid && !isInspectingPrefab) {
@@ -544,7 +544,7 @@ namespace Spine.Unity.Editor {
 		static bool SkeletonDataAssetIsValid (SkeletonDataAsset asset) {
 			return asset != null && asset.GetSkeletonData(quiet: true) != null;
 		}
-		
+
 		bool AreAnyMaskMaterialsMissing() {
 			#if BUILT_IN_SPRITE_MASK_COMPONENT
 			foreach (var o in targets) {

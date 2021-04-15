@@ -66,7 +66,7 @@ namespace Spine.Unity.Editor {
 
 		public override void OnInspectorGUI () {
 			#if !NEW_PREFAB_SYSTEM
-			bool isInspectingPrefab = (PrefabUtility.GetPrefabType(target) == PrefabType.Prefab);
+			bool isInspectingPrefab = (PrefabUtility.GetPrefabAssetType(target) == PrefabAssetType.Regular);
 			#else
 			bool isInspectingPrefab = false;
 			#endif
