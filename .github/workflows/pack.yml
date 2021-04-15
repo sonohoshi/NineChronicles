@@ -21,8 +21,8 @@ jobs:
         unityVersion:
           - 2020.3.0f1
         targetPlatform:
-          - Windows
-          - MacOS
+          - windows
+          - mac
     steps:
       - uses: actions/checkout@v2
         with:
@@ -39,13 +39,11 @@ jobs:
         with:
           path: ${{ matrix.projectPath }}/Library
           key: ${{ matrix.targetPlatform }}-${{ matrix.projectPath }}-Library-v4
-      - uses: docker://unityci/editor:ubuntu-2020.3.0f1-windows-mono-0.10.0 # FIXME: 이미지 pull 받아오는 속도 개선 필요
-        env:
-          ULF: ${{ secrets.ULF_2020_3_0_F1 }}
-          APV_SIGNING_PRIVATE_KEY: ${{ secrets.APV_SIGNING_PRIVATE_KEY }}
+      - uses: mosteo-actions/docker-run@v1
         with:
-          entrypoint: scripts/build-production.sh
-          args: ${{ matrix.targetPlatform }}
+          image: unityci/editor:${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}-mono-0
+          command: scripts/build-production.sh ${{ matrix.targetPlatform }}
+          params: --env ULF="${{ secrets.ULF_2020_3_0_F1 }}"
       - name: Pack
         run: |
           set -evx
@@ -59,8 +57,9 @@ jobs:
             
           targetPlatform=${{ matrix.targetPlatform }}
 
-          # MacOS일 경우 맨 앞 문자를 소문자로 변경
-          if [ "$targetPlatform" == "MacOS" ]; then
+          if [ "$targetPlatform" == "windows" ]; then
+            targetPlatform=Windows
+          elif [ "$targetPlatform" == "mac" ]; then
             targetPlatform=macOS
           fi
           

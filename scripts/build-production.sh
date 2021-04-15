@@ -9,7 +9,16 @@ if [[ "$#" != "1" ]]; then
   exit 1
 fi
 
-build_target="$1"
+if [[ "$1" = "windows" ]]; then
+  build_target="Windows"
+elif [[ "$1" = "mac" ]]; then
+  build_target="MacOS"
+else
+  {
+    echo "error: Unsupported build target [$1]"
+  } > /dev/stderr
+  exit 1
+fi
 
 # install dependencies
 if command -v apt-get; then
