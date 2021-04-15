@@ -48,7 +48,7 @@ namespace Spine.Unity.Editor {
 
 	/// <summary>
 	/// [SUPPORTS]
-	/// Linear, Constant, and Bezier Curves* 
+	/// Linear, Constant, and Bezier Curves*
 	/// Inverse Kinematics*
 	/// Inherit Rotation
 	/// Translate Timeline
@@ -56,15 +56,15 @@ namespace Spine.Unity.Editor {
 	/// Scale Timeline**
 	/// Event Timeline***
 	/// Attachment Timeline
-	/// 
+	///
 	/// RegionAttachment
 	/// MeshAttachment (optionally Skinned)
-	/// 
+	///
 	/// [LIMITATIONS]
 	/// *Bezier Curves are baked into the animation at 60fps and are not realtime. Use bakeIncrement constant to adjust key density if desired.
 	/// *Inverse Kinematics is baked into the animation at 60fps and are not realtime. Use bakeIncrement constant to adjust key density if desired.
 	/// ***Events may only fire 1 type of data per event in Unity safely so priority to String data if present in Spine key, otherwise a Float is sent whether the Spine key was Int or Float with priority given to Int.
-	/// 
+	///
 	/// [DOES NOT SUPPORT]
 	/// FFD (Unity does not provide access to BlendShapes with code)
 	/// Color Keys (Maybe one day when Unity supports full FBX standard and provides access with code)
@@ -127,7 +127,7 @@ namespace Spine.Unity.Editor {
 							Debug.LogWarningFormat("Duplicate AnimationClips were found named {0}", clip.name);
 						}
 						unityAnimationClipTable.Add(clip.name, clip);
-					}				
+					}
 				}
 			}
 
@@ -280,7 +280,7 @@ namespace Spine.Unity.Editor {
 				string prefabPath = outputPath + "/" + skeletonDataAsset.skeletonJSON.name + " (" + skin.Name + ").prefab";
 
 				Object prefab = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject));
-				
+
 				if (prefab == null) {
 					prefab = PrefabUtility.CreateEmptyPrefab(prefabPath);
 					newPrefab = true;
@@ -384,7 +384,7 @@ namespace Spine.Unity.Editor {
 								mesh = ExtractWeightedMeshAttachment(attachmentMeshName, meshAttachment, i, skeletonData, boneList, mesh);
 							else
 								mesh = ExtractMeshAttachment(attachmentMeshName, meshAttachment, mesh);
-							
+
 							material = attachment.GetMaterial();
 							unusedMeshNames.Remove(attachmentMeshName);
 							if (newPrefab || meshTable.ContainsKey(attachmentMeshName) == false)
@@ -444,7 +444,7 @@ namespace Spine.Unity.Editor {
 
 					PrefabUtility.ReplacePrefab(prefabRoot, prefab, ReplacePrefabOptions.ReplaceNameBased);
 				}
-				
+
 
 				EditorGUIUtility.PingObject(prefab);
 
@@ -452,7 +452,7 @@ namespace Spine.Unity.Editor {
 				AssetDatabase.SaveAssets();
 
 				GameObject.DestroyImmediate(prefabRoot);
-			
+
 			}
 			#endif
 
@@ -503,7 +503,7 @@ namespace Spine.Unity.Editor {
 			if (centered) {
 				bone.X = -attachment.X;
 				bone.Y = -attachment.Y;
-			}	
+			}
 
 			bone.UpdateWorldTransform();
 
@@ -1433,7 +1433,7 @@ namespace Spine.Unity.Editor {
 				#if NEW_PREFAB_SYSTEM
 				prefab = PrefabUtility.SaveAsPrefabAsset(root, bakedPrefabPath);
 				#else
-				prefab = PrefabUtility.CreatePrefab(bakedPrefabPath, root);
+				prefab = PrefabUtility.SaveAsPrefabAsset(root, bakedPrefabPath);
 				#endif
 
 				isNewPrefab = true;
@@ -1480,4 +1480,4 @@ namespace Spine.Unity.Editor {
 	}
 
 }
-	
+
