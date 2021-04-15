@@ -13,4 +13,4 @@ title "Build binary"
   -nographics \
   -logFile \
   -projectPath /src/ \
-  -executeMethod "NineChoronicles.Editor.Builder.BuildLinuxHeadlessDevelopment"
+  -executeMethod "Builder.BuildLinuxHeadlessDevelopment"
