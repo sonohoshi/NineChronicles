@@ -41,5 +41,5 @@ DOTNET_PATH="$(command -v dotnet)" \
   -batchmode \
   -nographics \
   -logFile \
-  -projectPath "$(dirname $0)/../nekoyume" \
+  -projectPath nekoyume \
   -executeMethod "Editor.Test.Build""$build_target""Development"
