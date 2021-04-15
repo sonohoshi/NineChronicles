@@ -6,13 +6,8 @@ using UnityEditor.Callbacks;
 
 namespace Editor
 {
-<<<<<<< HEAD:nekoyume/Assets/Editor/Test.cs
-    public class Test {
-=======
-    public class Builder
+    public class Test
     {
->>>>>>> 79143bbf3a07658576126753dc031cfd3529b79b:nekoyume/Assets/Editor/Builder.cs
-
         public static string PlayerName = PlayerSettings.productName;
 
         public const string BuildBasePath = "Build";
