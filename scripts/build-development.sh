@@ -42,4 +42,4 @@ DOTNET_PATH="$(command -v dotnet)" \
   -nographics \
   -logFile \
   -projectPath nekoyume \
-  -executeMethod "Builder.Build""$build_target""Development"
+  -executeMethod "Editor.Test.Build""$build_target""Development"

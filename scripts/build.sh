@@ -13,4 +13,4 @@ title "Build binary"
   -nographics \
   -logFile \
   -projectPath /src/ \
-  -executeMethod "Builder.BuildLinuxHeadlessDevelopment"
+  -executeMethod "Editor.Test.BuildLinuxHeadlessDevelopment"

@@ -6,7 +6,7 @@ using UnityEditor.Callbacks;
 
 namespace Editor
 {
-    public class Builder {
+    public class Test {
 
         public static string PlayerName = PlayerSettings.productName;
 
