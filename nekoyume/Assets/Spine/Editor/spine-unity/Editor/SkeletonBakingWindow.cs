@@ -28,7 +28,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-#if UNITY_2018_3 || UNITY_2019
+#if UNITY_2018_3 || UNITY_2019 || UNITY_2018_3_OR_NEWER
 #define NEW_PREFAB_SYSTEM
 #endif
 
@@ -76,7 +76,7 @@ namespace Spine.Unity.Editor {
 
 		void OnGUI () {
 			so = so ?? new SerializedObject(this);
-		
+
 			EditorGUIUtility.wideMode = true;
 			EditorGUILayout.LabelField("Spine Skeleton Prefab Baking", EditorStyles.boldLabel);
 
@@ -88,7 +88,7 @@ namespace Spine.Unity.Editor {
 				"\n\tLocal Shear" +
 				"\n\tAll Constraint types" +
 				"\n\tWeighted mesh verts with more than 4 bound bones" +
-			
+
 				"\n\nBaked Animations do not support the following:" +
 				"\n\tMesh Deform Keys" +
 				"\n\tColor Keys" +
@@ -148,10 +148,10 @@ namespace Spine.Unity.Editor {
 				}
 			}
 			EditorGUILayout.Space();
-			
+
 			if (!string.IsNullOrEmpty(skinToBake) && UnityEngine.Event.current.type == EventType.Repaint)
 				bakeSkin = skeletonData.FindSkin(skinToBake) ?? skeletonData.DefaultSkin;
-			
+
 			var prefabIcon = EditorGUIUtility.FindTexture("PrefabModel Icon");
 
 			if (hasExtraSkins) {
@@ -173,8 +173,8 @@ namespace Spine.Unity.Editor {
 				if (SpineInspectorUtility.LargeCenteredButton(SpineInspectorUtility.TempContent("Bake Skeleton", prefabIcon))) {
 					SkeletonBaker.BakeToPrefab(skeletonDataAsset, new ExposedList<Skin>(new[] { bakeSkin }), "", bakeAnimations, bakeIK, bakeEventOptions);
 				}
-				
-			}			
+
+			}
 
 		}
 	}

@@ -28,7 +28,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-#if UNITY_2018_3 || UNITY_2019
+#if UNITY_2018_3 || UNITY_2019 || UNITY_2018_3_OR_NEWER
 #define NEW_PREFAB_SYSTEM
 #endif
 
@@ -1433,7 +1433,7 @@ namespace Spine.Unity.Editor {
 				#if NEW_PREFAB_SYSTEM
 				prefab = PrefabUtility.SaveAsPrefabAsset(root, bakedPrefabPath);
 				#else
-				prefab = PrefabUtility.SaveAsPrefabAsset(root, bakedPrefabPath);
+				prefab = PrefabUtility.CreatePrefab(bakedPrefabPath, root);
 				#endif
 
 				isNewPrefab = true;
