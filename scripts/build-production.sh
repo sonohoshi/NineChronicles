@@ -36,10 +36,10 @@ install_license
 
 title "Build binary"
 DOTNET_PATH="$(command -v dotnet)" \
-/opt/unity/Editor/Unity \
+/opt/Unity/Editor/Unity \
   -quit \
   -batchmode \
   -nographics \
   -logFile \
   -projectPath nekoyume \
-  -executeMethod "Builder.Build""$build_target"
+  -executeMethod "Editor.Builder.Build""$build_target"

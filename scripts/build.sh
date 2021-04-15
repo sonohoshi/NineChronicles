@@ -7,10 +7,10 @@ title "Unity license"
 install_license
 
 title "Build binary"
-/opt/unity/Editor/Unity \
+/opt/Unity/Editor/Unity \
   -quit \
   -batchmode \
   -nographics \
   -logFile \
   -projectPath /src/ \
-  -executeMethod "Builder.BuildLinuxHeadlessDevelopment"
+  -executeMethod "Editor.Builder.BuildLinuxHeadlessDevelopment"
